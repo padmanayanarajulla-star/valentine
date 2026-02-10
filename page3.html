@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine - Thank You!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+            padding: 2rem;
+        }
+
+        .hearts-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #ff6b9d;
+            transform: rotate(45deg);
+            opacity: 0.6;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #ff6b9d;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            left: -15px;
+        }
+
+        .heart::after {
+            top: -15px;
+        }
+
+        .heart:nth-child(1) { left: 5%; top: 10%; width: 25px; height: 25px; animation-delay: 0s; }
+        .heart:nth-child(1)::before, .heart:nth-child(1)::after { width: 25px; height: 25px; }
+        .heart:nth-child(1)::before { left: -12.5px; }
+        .heart:nth-child(1)::after { top: -12.5px; }
+
+        .heart:nth-child(2) { left: 45%; top: 5%; width: 35px; height: 35px; animation-delay: 1s; }
+        .heart:nth-child(2)::before, .heart:nth-child(2)::after { width: 35px; height: 35px; }
+        .heart:nth-child(2)::before { left: -17.5px; }
+        .heart:nth-child(2)::after { top: -17.5px; }
+
+        .heart:nth-child(3) { left: 75%; top: 15%; width: 28px; height: 28px; animation-delay: 2s; }
+        .heart:nth-child(3)::before, .heart:nth-child(3)::after { width: 28px; height: 28px; }
+        .heart:nth-child(3)::before { left: -14px; }
+        .heart:nth-child(3)::after { top: -14px; }
+
+        .heart:nth-child(4) { left: 55%; top: 25%; width: 23px; height: 23px; animation-delay: 0.5s; }
+        .heart:nth-child(4)::before, .heart:nth-child(4)::after { width: 23px; height: 23px; }
+        .heart:nth-child(4)::before { left: -11.5px; }
+        .heart:nth-child(4)::after { top: -11.5px; }
+
+        .heart:nth-child(5) { left: 20%; top: 80%; width: 32px; height: 32px; animation-delay: 3s; }
+        .heart:nth-child(5)::before, .heart:nth-child(5)::after { width: 32px; height: 32px; }
+        .heart:nth-child(5)::before { left: -16px; }
+        .heart:nth-child(5)::after { top: -16px; }
+
+        .heart:nth-child(6) { left: 85%; top: 75%; width: 30px; height: 30px; animation-delay: 1.5s; }
+        .heart:nth-child(6)::before, .heart:nth-child(6)::after { width: 30px; height: 30px; }
+        .heart:nth-child(6)::before { left: -15px; }
+        .heart:nth-child(6)::after { top: -15px; }
+
+        @keyframes float {
+            0%, 100% { transform: rotate(45deg) translateY(0px); }
+            50% { transform: rotate(45deg) translateY(-20px); }
+        }
+
+        .card {
+            background: white;
+            border-radius: 30px;
+            padding: 3rem;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(139, 21, 56, 0.15);
+            z-index: 10;
+            animation: fadeInScale 0.8s ease-out;
+            position: relative;
+            border: 3px solid rgba(255, 107, 157, 0.2);
+        }
+
+        @keyframes fadeInScale {
+            from { 
+                opacity: 0; 
+                transform: scale(0.9) translateY(20px);
+            }
+            to { 
+                opacity: 1; 
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .decorative-hearts {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            font-size: 2.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.1); }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #8b1538;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .image-container {
+            width: 100%;
+            height: 350px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(139, 21, 56, 0.1);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .message {
+            text-align: center;
+            color: #8b1538;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .message .emoji {
+            font-size: 1.5rem;
+            display: inline-block;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .signature {
+            text-align: right;
+            color: #ff6b9d;
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 0.5rem;
+        }
+
+        .sparkle {
+            font-size: 1.5rem;
+            animation: sparkle 2s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
+            50% { opacity: 0.5; transform: scale(1.2) rotate(180deg); }
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .btn-back {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 500;
+            border: 2px solid #ff6b9d;
+            background: white;
+            color: #ff6b9d;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-back:hover {
+            background: #ff6b9d;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                padding: 2rem 1.5rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .image-container {
+                height: 250px;
+            }
+            .message {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-background">
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+    </div>
+
+    <div class="card">
+        <div class="decorative-hearts">
+            <span>💖</span>
+            <span>🌹</span>
+            <span>✨</span>
+        </div>
+
+        <h1>Ram Garu...</h1>
+
+        <div class="image-container">
+            <!-- Replace 'your-image.jpg' with your actual image filename -->
+            <img src="aaa.jpeg" alt="Valentine Image">
+        </div>
+
+        <div class="message">
+            Thanks for being my valentine! <span class="emoji">💕</span><br>
+            I promise to cherish you, laugh with you,<br>
+            and love you fiercely through every<br>
+            storm and sunset.<br> 
+            You're my forever valentine.<br>
+
+
+        </div>
+
+        <div class="signature">
+            <span class="sparkle">✨</span>
+            <span class="sparkle">✨</span>
+            - Your Padhu Garu...
+        </div>
+
+        <div class="button-container">
+            <a href="page1.html" class="btn-back">Start Over</a>
+        </div>
+    </div>
+
+    <script>
+        // Page loaded animation for hearts
+        window.addEventListener('load', function() {
+            console.log('Valentine card loaded!');
+        });
+    </script>
+</body>
+</html>
